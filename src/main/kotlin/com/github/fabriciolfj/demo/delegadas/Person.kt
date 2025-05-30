@@ -1,23 +1,14 @@
 package com.github.fabriciolfj.demo.delegadas
 
-class Person(val name: String, age: Int, salary: Int): Observable() {
-    var age: Int = age
-        set(newValue) {
-            val oldValue = field
-            field = newValue
-            notifyObservers(
-                "age", oldValue, newValue
-            )
-        }
+import kotlin.reflect.KProperty
 
-    var salary: Int = salary
-        set(newValue) {
-            val oldValue = field
-            field = newValue
-            notifyObservers(
-                "salary", oldValue, newValue
-            )
-        }
+class Person(val name: String, age: Int, salary: Int): Observable() {
+    var age by ObservableProperty(age, this)
+    var salary by ObservableProperty(salary, this)
+
+    private val onChange = { propriedade: KProperty<*>, oldValue: Any?, newValue: Any? ->
+        notifyObservers(propriedade.name, oldValue, newValue)
+    }
 
     val emails by lazy { loadEmails(this) }
 

@@ -16,4 +16,10 @@ fun main() {
     // Property age changed from 28 to 29!
     p.salary = 1500
     // Property salary changed from 1000 to 1500!
+
+    val customer = Customer()
+    customer.setAttibutes("name", "fabricio")
+    customer.setAttibutes("company", "microsoft")
+
+    println(customer.name)
 }
