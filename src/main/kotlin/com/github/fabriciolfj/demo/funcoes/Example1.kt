@@ -10,7 +10,7 @@ fun twoAndThree(operation: (Int, Int) -> Int) {
 
 fun String.filter(predicate: (Char) -> Boolean): String {
     return buildString {
-        for (char in this@filter) {  // <- AQUI
+        for (char in this@filter) {  // <- AQUI volta para iterar na string original e nao no this do buildstring
             if (predicate(char)) append(char)
         }
     }
