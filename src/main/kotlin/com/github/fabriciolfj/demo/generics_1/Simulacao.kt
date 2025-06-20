@@ -6,6 +6,7 @@ class Simulacao {
 }
 
 
+//reified preserva o tipo
 inline fun <reified T> isA(value: Any) = value is T
 inline fun <reified T> logger() = LoggerFactory.getLogger(T::class.java)
 
