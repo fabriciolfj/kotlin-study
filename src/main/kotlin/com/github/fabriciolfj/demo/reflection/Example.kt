@@ -12,6 +12,7 @@ fun main() {
     val person = Person("Alice", 29)
     val kClass = person::class
     println(kClass.simpleName)
+    println(kClass.qualifiedName)
 
     kClass.memberProperties.forEach { println(it) }
 }
